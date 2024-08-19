@@ -1,8 +1,10 @@
 "use client";
 import { useFormState } from "react-dom";
+
 import Button from "../components/Button";
 import FormInput from "../components/input";
 import FormAction from "./action";
+import "@/lib/db";
 
 export default function Home() {
   const [state, action] = useFormState(FormAction, null);

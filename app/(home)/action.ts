@@ -32,11 +32,6 @@ export default async function FormAction(prevData: any, FormData: FormData) {
     const fieldErrors = result.error.flatten().fieldErrors;
     return { fieldErrors };
   } else {
-    // if (prevData.success === true) {
-    //   return {
-    //     success: false,
-    //   };
-    // }
     return {
       success: true,
     };

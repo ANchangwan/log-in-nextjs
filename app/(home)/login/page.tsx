@@ -1,10 +1,10 @@
 "use client";
 import { useFormState } from "react-dom";
-
-import Button from "../components/Button";
-import FormInput from "../components/input";
+import Button from "../../components/Button";
+import FormInput from "../../components/input";
 import FormAction from "./action";
-import "../../lib/db";
+import Link from "next/link";
+import "@/lib/db";
 
 export default function Home() {
   const [state, action] = useFormState(FormAction, null);
@@ -40,7 +40,7 @@ export default function Home() {
         />
         <Button text="Log In" />
       </form>
-      {state?.success ? (
+      {/* {state?.success ? (
         <div className="flex gap-2 p-3 bg-green-500 rounded-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,10 @@ export default function Home() {
           </svg>
           로그인 성공했습니다!
         </div>
-      ) : null}
+      ) : null} */}
+      <div className="text-lg w-full text-center flex items-center justify-center text-white font-semibold h-10 bg-orange-400 rounded-full">
+        <Link href="/create-account">create-account</Link>
+      </div>
     </div>
   );
 }

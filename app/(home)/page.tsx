@@ -1,5 +1,6 @@
 import db from "@/lib/db";
 import TweetList from "../components/tweet-list";
+
 async function getTweet() {
   const tweets = db.tweet.findMany({
     select: {

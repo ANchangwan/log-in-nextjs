@@ -8,7 +8,7 @@ export default function CreateAccount() {
   const [state, action] = useFormState(CreateAction, null);
 
   return (
-    <div className="w-1/3 flex flex-col gap-2">
+    <div className="h-screen justify-center flex flex-col gap-2">
       <div className="text-center text-3xl mb-3">🔥 회원가입을 환영합니다!</div>
       <form action={action} className="flex flex-col gap-3">
         <FormInput

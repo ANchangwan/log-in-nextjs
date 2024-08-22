@@ -27,10 +27,10 @@ export default async function Profile() {
     redirect("/");
   };
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 h-screen justify-center items-center">
       <h1 className="text-5xl">환영합니다!! {user}</h1>
       <form
-        className="p-3 text-center rounded-full bg-orange-500"
+        className="p-3 w-2/4 text-center rounded-full bg-orange-500"
         action={logout}
       >
         <button>Log Out</button>

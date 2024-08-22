@@ -10,7 +10,7 @@ export default function Home() {
   const [state, action] = useFormState(FormAction, null);
 
   return (
-    <div className="w-1/3 flex flex-col gap-2">
+    <div className="h-screen justify-center flex flex-col gap-2">
       <div className="text-center text-3xl">✅ Hellow World</div>
       <form
         action={action}

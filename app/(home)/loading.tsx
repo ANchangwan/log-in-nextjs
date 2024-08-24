@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
-    <div className="p-5 animate-pulse flex flex-col gap-5">
-      {[...Array(10)].map((_, index) => (
+    <div className="p-5 animate-pulse flex flex-col gap-5 overflow-hidden">
+      {[...Array(7)].map((_, index) => (
         <div
           key={index}
           className="*:rounded-md flex gap-5 bg-neutral-300 opacity-70 shadow-lg"

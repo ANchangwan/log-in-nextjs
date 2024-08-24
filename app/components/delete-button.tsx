@@ -11,7 +11,7 @@ export default async function DeleteButton() {
         id: session.id,
       },
     });
-    console.log(tweets);
+
     redirect("/");
   };
   return (

@@ -1,5 +1,7 @@
 import db from "@/lib/db";
 import TweetList from "../components/tweet-list";
+import { Prisma } from "@prisma/client";
+import ListTweets from "../components/list-tweets";
 
 async function getTweet() {
   const tweets = db.tweet.findMany({
@@ -13,6 +15,7 @@ async function getTweet() {
         },
       },
     },
+    take: 1,
     orderBy: {
       created_at: "desc",
     },
@@ -20,16 +23,9 @@ async function getTweet() {
   return tweets;
 }
 
+export type TweetType = Prisma.PromiseReturnType<typeof getTweet>;
+
 export default async function Home() {
-  const tweets = await getTweet();
-  return (
-    <div
-      className="h-screen max-w-screen-md p-11
-     flex flex-col gap-2"
-    >
-      {tweets.map((tweet) => (
-        <TweetList key={tweet.id} {...tweet} username={tweet.user.username} />
-      ))}
-    </div>
-  );
+  const initialTweets = await getTweet();
+  return <ListTweets initialTweets={initialTweets} />;
 }

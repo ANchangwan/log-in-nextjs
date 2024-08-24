@@ -3,6 +3,7 @@ import DeleteButton from "@/app/components/delete-button";
 import UpdateButton from "@/app/components/update-button";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
+import { notFound } from "next/navigation";
 async function getUser(id: number) {
   const user = await db.tweet.findUnique({
     where: {
@@ -22,8 +23,16 @@ async function getUser(id: number) {
 }
 
 export default async function Tweet({ params }: { params: { id: string } }) {
-  const user = await getUser(Number(params.id));
+  const id = Number(params.id);
+  if (isNaN(id)) {
+    return notFound();
+  }
+  const user = await getUser(id);
   const session = await getSession();
+
+  if (!user) {
+    return notFound();
+  }
 
   return (
     <div className="p-10 flex flex-col gap-3">

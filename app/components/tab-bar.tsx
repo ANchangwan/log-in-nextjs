@@ -7,7 +7,7 @@ export default function TabBar() {
   return (
     <div
       className="fixed bottom-0 grid grid-cols-2 w-full max-w-screen-sm 
-    border-neutral-600 border-t px-5 py-6
+    border-neutral-600 border-t px-5 py-6 bg-yellow-600
     "
     >
       <Link className="text-center" href="/">

@@ -14,11 +14,11 @@ export default async function MoreTweets(page: number) {
       },
     },
     take: 1,
-    skip: 1,
+    skip: page * 1,
     orderBy: {
       created_at: "desc",
     },
   });
-  console.log(tweets);
+
   return tweets;
 }

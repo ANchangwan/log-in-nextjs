@@ -31,8 +31,7 @@ export default async function Home() {
 
   return (
     <div>
-      <Header />
-      <ListTweets initialTweets={initialTweets} />;
+      <ListTweets initialTweets={initialTweets} />
     </div>
   );
 }

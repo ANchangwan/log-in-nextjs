@@ -2,16 +2,19 @@ import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
 
-export default async function DeleteButton() {
-  const session = await getSession();
-  const onDelete = async (formData: FormData) => {
+interface IdProps {
+  id: string;
+}
+
+export default async function DeleteButton({ id }: IdProps) {
+  const onDelete = async () => {
     "use server";
-    const tweets = await db.tweet.delete({
+    const tweet = await db.tweet.delete({
       where: {
-        id: session.id,
+        id: +id,
       },
     });
-
+    console.log(tweet);
     redirect("/");
   };
   return (

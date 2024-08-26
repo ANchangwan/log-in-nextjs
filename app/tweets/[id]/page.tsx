@@ -54,7 +54,7 @@ export default async function Tweet({ params }: { params: { id: string } }) {
         {session.id == user?.user.id ? (
           <div className="flex gap-2">
             <UpdateButton />
-            <DeleteButton />
+            <DeleteButton id={params.id} />
           </div>
         ) : null}
       </div>

@@ -7,6 +7,7 @@ interface TweetProps {
 }
 export default function TweetText({ text }: TweetProps) {
   const [tweet, setTweet] = useState(text);
+  
   <form>
     <textarea
       className="w-full h-1/4 bg-neutral-200 ring-2 focus:outline-none ring-orange-500 p-3"

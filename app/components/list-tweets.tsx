@@ -4,7 +4,6 @@ import { TweetType } from "../(home)/page";
 import TweetList from "./tweet-list";
 import MoreTweets from "../(home)/action";
 
-
 interface initialTweetsProps {
   initialTweets: TweetType;
 }
@@ -27,8 +26,8 @@ export default function ListTweets({ initialTweets }: initialTweetsProps) {
           setIsLoading(true);
           const tweets = await MoreTweets(page + 1);
           if (tweets.length !== 0) {
-            setPage((prev) => prev + 1);
             setTweets((prev) => [...prev, ...tweets]);
+            setPage((prev) => prev + 1);
           } else {
             setIsLast(true);
           }
@@ -40,7 +39,6 @@ export default function ListTweets({ initialTweets }: initialTweetsProps) {
       observer.observe(trigger.current);
     }
     return () => {
-      console.log("disconnect");
       observer.disconnect();
     };
   }, [page]);

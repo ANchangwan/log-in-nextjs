@@ -7,7 +7,7 @@ interface ButtonProps {
 
 export default function Button({ text }: ButtonProps) {
   const { pending } = useFormStatus();
- 
+
   return (
     <button
       disabled={pending}

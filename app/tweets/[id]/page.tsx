@@ -1,5 +1,7 @@
 import BackButton from "@/app/components/back-button";
 import DeleteButton from "@/app/components/delete-button";
+import Response from "@/app/components/comments";
+import ResponseList from "@/app/components/comment-list";
 import UpdateButton from "@/app/components/update-button";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
@@ -58,6 +60,7 @@ export default async function Tweet({ params }: { params: { id: string } }) {
           </div>
         ) : null}
       </div>
+      <ResponseList id={id} />
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import db from "@/lib/db";
-import TweetList from "../components/tweet-list";
 import { Prisma } from "@prisma/client";
 import ListTweets from "../components/list-tweets";
-import Header from "../components/header";
+
 
 async function getTweet() {
   const tweets = db.tweet.findMany({

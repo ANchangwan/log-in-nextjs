@@ -15,7 +15,7 @@ datasource db {
 
 model User {
   id         Int        @id @default(autoincrement())
-  username   String?    @unique
+  username   String     @unique
   password   String?    @unique
   email      String?    @unique
   bio        String?
@@ -40,7 +40,7 @@ model Tweet {
 //댓글
 model Response {
   id         Int      @id @default(autoincrement())
-  commnet    String
+  comment    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)

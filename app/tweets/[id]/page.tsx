@@ -6,6 +6,7 @@ import UpdateButton from "@/app/components/update-button";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { notFound } from "next/navigation";
+import LikeDislikeButton from "@/app/components/like-dislike";
 async function getUser(id: number) {
   const user = await db.tweet.findUnique({
     where: {
@@ -52,6 +53,7 @@ export default async function Tweet({ params }: { params: { id: string } }) {
             👩‍🍳
           </div>
           <h1>{user?.user.username}</h1>
+          <LikeDislikeButton id={id} />
         </div>
         {session.id == user?.user.id ? (
           <div className="flex gap-2">
@@ -60,6 +62,7 @@ export default async function Tweet({ params }: { params: { id: string } }) {
           </div>
         ) : null}
       </div>
+
       <ResponseList id={id} />
     </div>
   );

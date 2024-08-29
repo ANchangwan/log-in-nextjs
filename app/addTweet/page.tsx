@@ -24,7 +24,6 @@ export default function TweetText() {
         ))}
         <Button text="Tweet button" />
       </form>
-      <ResponseList />
     </div>
   );
 }

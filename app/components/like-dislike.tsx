@@ -1,6 +1,8 @@
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon as HearIconSolid } from "@heroicons/react/24/solid";
+
 import { revalidatePath } from "next/cache";
 
 interface LikeDislikeProps {
@@ -86,8 +88,12 @@ export default async function LikeDislikeButton({ id }: LikeDislikeProps) {
 
   return (
     <form action={isLike ? getDislikeTweet : getLikeTweet}>
-      <button>
-        <HeartIcon className="size-7" />
+      <button className="flex justify-center items-center gap-1">
+        {isLike ? (
+          <HearIconSolid className="size-7 text-red-500" />
+        ) : (
+          <HeartIcon className="size-7" />
+        )}
         <span>{like?._count.likes}</span>
       </button>
     </form>

@@ -14,6 +14,7 @@ const tweetSchema = z
 
 export default async function RegisterTweet(prevData: any, formData: FormData) {
   const data = formData.get("tweet");
+
   const result = tweetSchema.safeParse(data);
   if (!result.success) {
     return result.error.flatten();

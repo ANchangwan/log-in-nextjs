@@ -1,13 +1,13 @@
 import BackButton from "@/app/components/back-button";
 import DeleteButton from "@/app/components/delete-button";
-import Response from "@/app/components/comments";
+
 import ResponseList from "@/app/components/comment-list";
 import UpdateButton from "@/app/components/update-button";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { notFound } from "next/navigation";
 import LikeDislikeButton from "@/app/components/like-dislike";
-import TweetText from "@/app/addTweet/page";
+
 import CommentForm from "@/app/(comment)/comment-form";
 async function getUser(id: number) {
   const user = await db.tweet.findUnique({

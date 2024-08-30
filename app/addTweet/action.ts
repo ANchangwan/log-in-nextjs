@@ -9,8 +9,8 @@ const tweetSchema = z
   .string({
     required_error: "입력해주세요!",
   })
-  .nonempty({ message: " 입력해주세요!!" })
-  .max(255, { message: "255글자 이상 입력하지 마세요!!" });
+  .max(255, { message: "255글자 이상 입력하지 마세요!!" })
+  .refine((value) => value.length > 0, { message: "빈칸 입력은 안됩니다!" });
 
 export default async function RegisterTweet(prevData: any, formData: FormData) {
   const data = formData.get("tweet");

@@ -7,7 +7,7 @@ interface InputProps {
 
 export default function FormInput({
   name,
-  errors,
+  errors = [],
   ...rest
 }: InputProps & InputHTMLAttributes<HTMLInputElement>) {
   return (

@@ -32,3 +32,23 @@ export async function getDislikeTweet(tweetId: number) {
     return Boolean(dislike);
   } catch (e) {}
 }
+
+export async function getResponse(tweetId: number) {
+  const response = await db.response.findMany({
+    where: {
+      tweetId,
+    },
+    select: {
+      id: true,
+      comment: true,
+      user: {
+        select: {
+          username: true,
+        },
+      },
+      created_at: true,
+    },
+  });
+  revalidatePath(`tweets/${tweetId}`);
+  return response;
+}

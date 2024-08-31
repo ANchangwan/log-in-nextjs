@@ -9,6 +9,8 @@ import { notFound } from "next/navigation";
 import LikeDislikeButton from "@/app/components/like-dislike";
 
 import CommentForm from "@/app/(comment)/comment-form";
+import { getResponse } from "./action";
+import { Prisma } from "@prisma/client";
 async function getUser(id: number) {
   const user = await db.tweet.findUnique({
     where: {
@@ -27,6 +29,8 @@ async function getUser(id: number) {
   return user;
 }
 
+export type CommentType = Prisma.PromiseReturnType<typeof getResponse>;
+
 export default async function Tweet({ params }: { params: { id: string } }) {
   const id = Number(params.id);
   if (isNaN(id)) {
@@ -34,6 +38,7 @@ export default async function Tweet({ params }: { params: { id: string } }) {
   }
   const user = await getUser(id);
   const session = await getSession();
+  const comment = await getResponse(id);
 
   if (!user) {
     return notFound();
@@ -64,8 +69,8 @@ export default async function Tweet({ params }: { params: { id: string } }) {
           </div>
         ) : null}
       </div>
-      <CommentForm id={id} />
-      <ResponseList id={id} />
+      <CommentForm id={id} comment={comment} />
+      {/* <ResponseList id={id} /> */}
     </div>
   );
 }

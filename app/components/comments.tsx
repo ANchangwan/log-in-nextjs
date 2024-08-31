@@ -1,5 +1,4 @@
 import { formatToTimeAgo } from "@/lib/utils";
-
 interface ResponseProps {
   id: number;
   comment: string;
@@ -15,6 +14,7 @@ export default function Comments({
   user,
   created_at,
 }: ResponseProps) {
+  
   return (
     <div key={id} className="grid grid-cols-4 bg-slate-400 p-4 rounded-md">
       <div className="flex flex-col justify-center items-center gap-2  max-w-28">

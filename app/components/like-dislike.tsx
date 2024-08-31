@@ -6,22 +6,6 @@ interface LikeDislikeProps {
   id: number;
 }
 
-async function getLikeCount(id: number) {
-  const like = await db.tweet.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      _count: {
-        select: {
-          likes: true,
-        },
-      },
-    },
-  });
-  return like;
-}
-
 async function getIsLike(tweetId: number) {
   const session = await getSession();
   const like = await db.like.findUnique({

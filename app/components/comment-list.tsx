@@ -1,12 +1,11 @@
 import db from "@/lib/db";
-import { Prisma } from "@prisma/client";
 import Comments from "./comments";
 
 interface ResponsProps {
   id: number;
 }
 
-async function getResponse(id: number) {
+export async function getResponse(id: number) {
   const response = await db.response.findMany({
     where: {
       tweet: {
@@ -29,7 +28,6 @@ async function getResponse(id: number) {
 
 export default async function ResponseList({ id }: ResponsProps) {
   const responses = await getResponse(id);
-
   return (
     <div className="flex flex-col gap-5">
       {responses.map((response) => (

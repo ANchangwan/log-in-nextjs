@@ -25,10 +25,14 @@ export default function CommentForm({
   const formAction = async (formData: FormData) => {
     const tweetId = formData.get("tweetId") as string;
     const message = formData.get("comment") as string;
-    const res = await commentData(message, tweetId);
-    //@ts-ignore
-    addOpMessage(res);
-    setComment("");
+    try {
+      const res = await commentData(message, tweetId);
+      //@ts-ignore
+      addOpMessage(res);
+      setComment("");
+    } catch (e) {
+      throw new Error("Failed to create task");
+    }
   };
   const onhandleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);

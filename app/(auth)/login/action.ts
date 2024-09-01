@@ -21,11 +21,11 @@ const loginSchema = z.object({
   email: z
     .string()
     .email()
-    .refine((email) => email.includes("@zod.com"), {
-      message: "@zod.com을 포함해주세요!!",
+    .refine((email) => email.includes("@"), {
+      message: "@을 포함해주세요!!",
     })
     .refine(checkEmailUnique, { message: "이메일이 존재하지 않습니다" }),
-  username: z.string().min(4, { message: "5글자 이상 입력해주세요!!" }),
+  username: z.string().min(2, { message: "2글자 이상 입력해주세요!!" }),
   password: z.string().min(4, { message: "4글자 이상을 입력해주세요!!" }),
   // .regex(/\d/, { message: "숫자를 하나 이상 포함해야 합니다." }),
 });

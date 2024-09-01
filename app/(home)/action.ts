@@ -13,8 +13,8 @@ export default async function MoreTweets(page: number) {
         },
       },
     },
-    take: 1,
-    skip: page * 1,
+    take: 25,
+    skip: page * 25,
     orderBy: {
       created_at: "desc",
     },

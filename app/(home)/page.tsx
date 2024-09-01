@@ -2,7 +2,6 @@ import db from "@/lib/db";
 import { Prisma } from "@prisma/client";
 import ListTweets from "../components/list-tweets";
 
-
 async function getTweet() {
   const tweets = db.tweet.findMany({
     select: {
@@ -15,7 +14,7 @@ async function getTweet() {
         },
       },
     },
-    take: 1,
+    take: 25,
     orderBy: {
       created_at: "desc",
     },

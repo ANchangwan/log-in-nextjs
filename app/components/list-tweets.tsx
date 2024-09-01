@@ -57,7 +57,7 @@ export default function ListTweets({ initialTweets }: initialTweetsProps) {
           ref={trigger}
           className="px-4 mt-[300vh] z-40 mb-96 py-2 w-fit mx-auto font-semibold rounded-lg border-none bg-orange-500 text-white"
         >
-          {isLoading ? "로딩 중..." : "Read More"}
+          {isLoading ? "로딩 중...." : "Read More"}
         </span>
       )}
     </div>

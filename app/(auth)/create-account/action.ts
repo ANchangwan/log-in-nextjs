@@ -27,6 +27,7 @@ const checkUniqueUsername = async (username: string) => {
       id: true,
     },
   });
+  console.log(!Boolean(checkUsername));
   return !Boolean(checkUsername);
 };
 
@@ -45,25 +46,25 @@ const formSchema = z
     password: z.string({ required_error: "password를 입력해주세요!" }),
     password2: z.string({ required_error: "confirm password를 입력해주세요" }),
   })
-  .superRefine(async ({ username }, ctx) => {
-    const user = await db.user.findUnique({
-      where: {
-        username,
-      },
-      select: {
-        id: true,
-      },
-    });
-    if (!user) {
-      ctx.addIssue({
-        code: "custom",
-        message: "이미 존재하는 username입니다!",
-        path: ["username"],
-        fatal: true,
-      });
-      return z.NEVER;
-    }
-  })
+  // .superRefine(async ({ username }, ctx) => {
+  //   const user = await db.user.findUnique({
+  //     where: {
+  //       username,
+  //     },
+  //     select: {
+  //       id: true,
+  //     },
+  //   });
+  //   if (!user) {
+  //     ctx.addIssue({
+  //       code: "custom",
+  //       message: "이미 존재하는 username입니다!",
+  //       path: ["username"],
+  //       fatal: true,
+  //     });
+  //     return z.NEVER;
+  //   }
+  // })
   .refine((data) => data.password === data.password2, {
     message: "password가 일치하지 않습니다!",
     path: ["password2"], // path of error

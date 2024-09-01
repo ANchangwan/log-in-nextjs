@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.18.0",
+    "@vercel/postgres": "^0.9.0",
     "bcrypt": "^5.1.1",
     "iron-session": "^8.0.3",
     "next": "14.2.5",

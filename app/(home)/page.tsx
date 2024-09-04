@@ -24,6 +24,8 @@ async function getTweet() {
 
 export type TweetType = Prisma.PromiseReturnType<typeof getTweet>;
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const initialTweets = await getTweet();
 
